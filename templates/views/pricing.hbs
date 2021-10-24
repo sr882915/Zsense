@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}
+    <title>Pricing</title>
+</head>
+<body>
+    <header id="pheader">
+         <nav class="navbar navbar-expand-lg ">
+            <div class="container w-100">
+
+                <a class="navbar-brand" href="/"><img src="./images/logo.png" alt="logo" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav_mid text-center">
+                        <li class="nav-item active">
+                            <a class="nav-link off" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link last_nav off" href="/logout">logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sign buy off  mr-2" target="_blank" href="https://wa.me/message/XOFDQT4RS2LCK1"><i class="fas  fa-cart-plus pr-1"></i>Buy Now</a>
+                        </li>
+
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+        <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-8 offset-2 offset-lg-2 offset-md-2">
+          <h1 data-aos='zoom-out'>Pricing for Everyone</h1>
+          <p data-aos='zoom-out' data-aos-delay="120">We have plans for everyone.weather you want a single setup or would rather have a flexible solution with automated contract</p>
+          <div class="price_card" data-aos='zoom-in' data-aos-delay="180">
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 pcard pcard1">
+                    <h4>Single Setup</h4>
+                    <h2><i class="fas fa-rupee-sign mr-2"></i>4999</h2>
+                    <div class="list">
+                        <ul>
+                            <li>Upto two pages</li>
+                            <li>Full support</li>
+                            <li>Full customization</li>
+                            <li>Upto two revisions</li>
+                            <li>Basic Graphics Provided</li>
+                            <li>2 days delivery</li>
+                        </ul>
+                    </div>
+                    <a target="_blank" href="https://wa.me/message/XOFDQT4RS2LCK1"><button class="btn btn-primary">Buy Now</button> </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 pcard pcard2">
+                    <h4>Multiple Setup</h4>
+                    <h2><i class="fas fa-rupee-sign mr-2"></i>12999</h2>
+                    <div class="list">
+                        <ul>
+                            <li>Upto five pages</li>
+                            <li>Full support</li>
+                            <li>Full customization</li>
+                            <li>Upto five revisions</li>
+                            <li>Graphics with contact us page</li>
+                            <li>5 days delivery</li>
+                        </ul>
+                    </div>
+                         <a target="_blank" href="https://wa.me/message/XOFDQT4RS2LCK1"><button class="btn btn-primary">Buy Now</button> </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 pcard pcard3">
+                    <h4>Extended Setup</h4>
+                    <h2><i class="fas fa-rupee-sign mr-2"></i>19999</h2>
+                    <div class="list">
+                        <ul>
+                            <li>Upto seven pages</li>
+                            <li>Extreme support</li>
+                            <li>Full customization</li>
+                            <li>Unlimited revisions</li>
+                            <li>Graphics, login, logout & contact us page</li>
+                            <li>7 days delivery</li>
+                        </ul>
+                    </div>
+                         <a target="_blank" href="https://wa.me/message/XOFDQT4RS2LCK1"><button class="btn btn-primary">Buy Now</button> </a>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </header>
+    {{>faq}}
+    <br>
+    {{>device}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {{>reviews}}
+    {{>footer}}
+    <div class="arrow" id="arrow" onclick="myFunc()"><i class="fas fa-arrow-up "></i></div>
+    <div class="bg_change"><img src="images/sun.png" alt="logo" class='star img-fluid' id="bgCng"></div>
+
+
+    {{>javascript}}
+    <script>
+        var starIcon = document.getElementById("bgCng");
+        starIcon.onclick = function () {
+            document.body.classList.toggle("dark_theme");
+            if (document.body.classList.contains("dark_theme")) {
+                document.getElementById("bgCng").setAttribute("src", "images/moon.png")
+            } else {
+                document.getElementById("bgCng").setAttribute("src", "images/sun.png")
+            }
+        }
+    </script>
+</body>
+</html>

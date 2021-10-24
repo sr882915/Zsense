@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container w-100">
+
+                <a class="navbar-brand" href="/"><img src="./images/logo.png" alt="logo" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav_mid text-center">
+                        <li class="nav-item active">
+                            <a class="nav-link off" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link last_nav off" href="/pricing">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sign off" href="/register">Sign up</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sign buy off  mr-2" target="_blank" href="https://wa.me/message/XOFDQT4RS2LCK1"><i class="fas  fa-cart-plus pr-1"></i>Buy Now</a>
+                        </li>
+
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+        <div class="container wrapper">
+            <div class="row main_row">
+                <div class="col-lg-7 col-md-8 col-sm-10 col-12 main_sec">
+                    <div class="card js-tilt" data-tilt>
+                        <div class="card-body">
+                            <h2 class="text-center heading">Login</h2>
+                            <form action="/login" method="POST" autocomplete="off" onSubmit="return validat()" id="lform" class="lform">
+                                <div class="form-group">
+                                    <input autocomplete="off" type="email" class="form-control" id="lemail"
+                                        aria-describedby="lemailHelp" required placeholder="Enter Your Email" name="email">
+                                    <small id="lemailHelp" class="ml-2 form-text text-muted">We'll never share your email
+                                        with
+                                        anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <input autocomplete="off" type="password" class="form-control" id="lpassword"
+                                        name="password" required placeholder="Enter Your Password"  aria-describedby="lpasslHelp">
+                                        <small id="lpassHelp" class="ml-2 form-text text-muted">We'll never share your password
+                                        with
+                                        anyone else.</small>
+                                </div>
+                                <p>Not registered yet? <a href="/register">Sign Up</a> here.</p>
+                                <div class="mysub">
+                                    <button type="submit" class="mySubBtn" id="lsubmit">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="bg_change"><img src="images/sun.png" alt="logo" class='star img-fluid' id="bgCng"></div>
+
+
+
+
+
+
+    {{>javascript}}
+     <script>
+
+        //registration form validation 
+        function validat() {
+            var lemail = document.getElementById("lemail").value;
+            var lpassword = document.getElementById("lpassword").value;
+            console.log(lemail, lpassword)
+
+            var lemailCheck = /^[A-Za-z0-9]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+            var lpasswordCheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+
+
+            {{!-- email check --}}
+            if (lemailCheck.test(lemail)) {
+                document.getElementById("lemailHelp").innerHTML = " " + lemail;
+                document.getElementById("lemail").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+
+            } else {
+                document.getElementById("lemail").style.borderBottom = "3px solid red";
+                document.getElementById("lemailHelp").innerHTML = "** Invalid email ";
+                return false;
+            }
+            {{!-- password check --}}
+            if (lpasswordCheck.test(lpassword)) {
+                document.getElementById("lpassHelp").innerHTML = " " ;
+                document.getElementById("lpassword").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+
+            } else{
+                document.getElementById("lpassword").style.borderBottom = "3px solid red";
+                document.getElementById("lpassHelp").innerHTML = "** Invalid password ";
+                return false;
+            }
+           
+            
+
+        }
+    </script>
+    <script>
+        var starIcon = document.getElementById("bgCng");
+        starIcon.onclick = function () {
+            document.body.classList.toggle("dark_theme");
+            if (document.body.classList.contains("dark_theme")) {
+                document.getElementById("bgCng").setAttribute("src", "images/moon.png")
+            } else {
+                document.getElementById("bgCng").setAttribute("src", "images/sun.png")
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>header}}
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container w-100">
+
+                <a class="navbar-brand" href="/"><img src="./images/logo.png" alt="logo" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav_mid text-center">
+                        <li class="nav-item active">
+                            <a class="nav-link off" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link last_nav off" href="/pricing">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sign off" href="/login">login</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sign buy off  mr-2" target="_blank"
+                                href="https://wa.me/message/XOFDQT4RS2LCK1"><i class="fas  fa-cart-plus pr-1"></i>Buy
+                                Now</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="container wrapper">
+            <div class="row main_row">
+                <div class="col-lg-7 col-md-8 col-sm-10 col-12 main_sec">
+                    <div class="card js-tilt" data-tilt>
+                        <div class="card-body">
+                            <h2 class="text-center heading">Register Yourself</h2>
+                            <form action="/register" method="POST" autocomplete="off" id="rform" class="rform"
+                                onSubmit="return validator()">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="rname" name="rname"
+                                        placeholder="Enter Your Name" required area-describedby='nameHelp'>
+                                    <small id="nameHelp" class="form-text ml-2 text-muted">Name should be between 3-25
+                                        characters </small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="rnumber" aria-describedby="numHelp"
+                                        required placeholder="Enter Your Number" name="rnumber">
+                                    <small id="numHelp" class="form-text ml-2 text-muted">Number should be yours</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="remail" aria-describedby="emailHelp"
+                                        required placeholder="Enter Your Email" name="remail">
+                                    <small id="emailHelp" class="form-text ml-2 text-muted">we will contact you by this
+                                        email</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="rpassword" name="rpassword" required
+                                        placeholder="Enter Your Password" aria-describedby="passHelp">
+                                    <small id="passHelp" class="form-text ml-2 text-muted">Password should between 8-16 characters contain at
+                                        least one special character and number</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="rcpassword" name="rcpassword"
+                                        required placeholder="Confirm Your Password" area-describedby="cpassHelp">
+                                    <small id="cpassHelp" class="form-text ml-2 text-muted">Type again your
+                                        password</small>
+                                </div>
+                                <div class="mysub">
+                                    <button type="submit" class="mySubBtn" id="rsubmit">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="bg_change"><img src="images/sun.png" alt="logo" class='star img-fluid' id="bgCng"></div>
+    {{>javascript}}
+
+
+    <script>
+
+        //registration form validation 
+        function validator() {
+            var rname = document.getElementById("rname").value;
+            var rnumber = document.getElementById("rnumber").value;
+            var remail = document.getElementById("remail").value;
+            var rpassword = document.getElementById("rpassword").value;
+            var rcpassword = document.getElementById("rcpassword").value;
+
+            var rnameCheck = /^[A-Za-z. ]{3,25}$/;
+            var rnumberCheck = /^(\+?)([\d]{2})?[\d]{10}$/;
+            var remailCheck = /^[A-Za-z0-9]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+            var rpasswordCheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+
+            {{!-- name check --}}
+            if (rnameCheck.test(rname)) {
+                document.getElementById("nameHelp").innerHTML = " " + rname;
+                document.getElementById("rname").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+            } else {
+                document.getElementById("rname").style.borderBottom = "3px solid red";
+                document.getElementById("nameHelp").innerHTML = "** Invalid Name ";
+                return false;
+            }
+            {{!-- number check --}}
+            if (rnumberCheck.test(rnumber)) {
+                document.getElementById("numHelp").innerHTML = " " + rnumber;
+                document.getElementById("rnumber").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+
+            } else {
+                document.getElementById("rnumber").style.borderBottom = "3px solid red";
+                document.getElementById("numHelp").innerHTML = "** Invalid number ";
+                return false;
+            }
+            {{!-- email check --}}
+            if (remailCheck.test(remail)) {
+                document.getElementById("emailHelp").innerHTML = " " + remail;
+                document.getElementById("remail").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+
+            } else {
+                document.getElementById("remail").style.borderBottom = "3px solid red";
+                document.getElementById("emailHelp").innerHTML = "** Invalid email ";
+                return false;
+            }
+            {{!-- password check --}}
+            if (rpasswordCheck.test(rpassword)) {
+                document.getElementById("passHelp").innerHTML = " " ;
+                document.getElementById("rpassword").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+
+            } else{
+                document.getElementById("rpassword").style.borderBottom = "3px solid red";
+                document.getElementById("passHelp").innerHTML = "** Invalid password ";
+                return false;
+            }
+            {{!-- confirm pass checking      --}}
+            if(rpassword===rcpassword){
+                document.getElementById("cpassHelp").innerHTML = " " ;
+                document.getElementById("rcpassword").style.borderBottom = " 1px solid rgba(255, 255, 255, 0.274)";
+            
+            }else{
+                document.getElementById("rcpassword").style.borderBottom = "3px solid red";
+                document.getElementById("cpassHelp").innerHTML = "** Password not matching ";
+                return false;
+            }
+            
+
+        }
+    </script>
+    <script>
+        var starIcon = document.getElementById("bgCng");
+        starIcon.onclick = function () {
+            document.body.classList.toggle("dark_theme");
+            if (document.body.classList.contains("dark_theme")) {
+                document.getElementById("bgCng").setAttribute("src", "images/moon.png")
+            } else {
+                document.getElementById("bgCng").setAttribute("src", "images/sun.png")
+            }
+        }
+    </script>
+</body>
+
+</html>
